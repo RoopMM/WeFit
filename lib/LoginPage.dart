@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:group_project_1/SignIn.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -73,11 +74,15 @@ class _State extends State<LoginPage> {
                         Text('Does not have account?'),
                         TextButton(
                           child: Text(
-                            'Sign in',
+                            'Sign Up',
                             style: TextStyle(fontSize: 20),
                           ),
                           onPressed: () {
                             //signup screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => SignIn()),
+                            );
                           },
                         )
                       ],
