@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:group_project_1/About.dart';
 // import 'app_example/Login_Screen.dart';
 import 'LoginPage.dart';
-
 //Roop Malhans
 //Jashanpreet Mann
 
