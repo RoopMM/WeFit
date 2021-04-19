@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:group_project_1/SignIn.dart';
-
-
+import 'package:group_project_1/Payment.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -107,9 +106,25 @@ class _State extends State<LoginPage> {
                       ],
                       mainAxisAlignment: MainAxisAlignment.center,
                     )),
-
-              //jashan code add here
-
+                Container(
+                    child: Row(
+                      children: <Widget>[
+                        TextButton(
+                          child: Text(
+                            'Pay',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          onPressed: () {
+                            //signup screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Payment()),
+                            );
+                          },
+                        )
+                      ],
+                      mainAxisAlignment: MainAxisAlignment.center,
+                    )),
               ],
             )))
     );
