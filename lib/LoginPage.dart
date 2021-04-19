@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:group_project_1/SignIn.dart';
 import 'package:group_project_1/Payment.dart';
+import 'package:group_project_1/FitnessEventPage.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -79,12 +80,18 @@ class _State extends State<LoginPage> {
                     child: ElevatedButton(
                       child: Text('Login'),
                       onPressed: () {
-                        print(nameController.text);
-                        print(passwordController.text);
+                        if(formkey.currentState.validate()){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => FitnessEventPage()),
+                          );
+                        }
+                        else{
+                          return null;
+                        }
                       },
                     )),
 
-                //jashan code add here
 
                 Container(
                     child: Row(
