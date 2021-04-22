@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:group_project_1/SignIn.dart';
-import 'package:group_project_1/Payment.dart';
-import 'package:group_project_1/FitnessEventPage.dart';
+import 'package:groupProject/SignIn.dart';
+import 'package:groupProject/Payment.dart';
+import 'package:groupProject/FitnessEventPage.dart';
 
 class LoginPage extends StatefulWidget {
   @override
