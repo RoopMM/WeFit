@@ -33,17 +33,8 @@ class _State extends State<LoginPage> {
                 showAlert(),
                 Container(
                     alignment: Alignment.center,
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      'WeFit',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 30),
-                    )),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: TextFormField(
+                    padding: EdgeInsets.all(10), child: Text('WeFit', style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500, fontSize: 30),)),
+                Container(padding: EdgeInsets.all(10), child: TextFormField(
                     validator: (value){
                       if (value==null||value.isEmpty) {
                         return 'Required';
@@ -59,9 +50,7 @@ class _State extends State<LoginPage> {
                     ),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                  child: TextFormField(
+                Container(padding: EdgeInsets.fromLTRB(10, 10, 10, 0), child: TextFormField(
                     validator: (value){
                       if (value==null||value.isEmpty) {
                         return 'Required';

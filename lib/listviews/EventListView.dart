@@ -39,10 +39,13 @@ class EventList extends StatelessWidget {
     return Container(
       width: 300,
       child: InkWell(
-        onTap: (){
-          Navigator.push((context),MaterialPageRoute(builder: (context) => Event()),);
-        },
+        // onTap: (){
+        //   Navigator.push((context),MaterialPageRoute(builder: (context) => Event()),);
+        // },
         child: ListTile(
+          onTap: (){
+            Navigator.push((context),MaterialPageRoute(builder: (context) => Event()),);
+          },
           title: Image.asset(image),
           subtitle: Container(
             alignment:Alignment.topCenter,
