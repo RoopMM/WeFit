@@ -16,7 +16,7 @@ class _State extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final formkey = GlobalKey<FormState>();
-
+  String error;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +30,7 @@ class _State extends State<LoginPage> {
                 key: formkey,
               child: ListView(
               children: <Widget>[
+                showAlert(),
                 Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(10),
@@ -136,7 +137,7 @@ class _State extends State<LoginPage> {
                 Container(
                     child: Row(
                       children: <Widget>[
-                    RaisedButton(child:Text("Open Maps"),onPressed:(){
+                    ElevatedButton(child:Text("Open Maps"),onPressed:(){
                       MapUtils.openMap(-3.823216,-38.481700);
                     }
                     )],
@@ -146,6 +147,36 @@ class _State extends State<LoginPage> {
             )))
     );
   }
+
+  Widget showAlert(){
+    if(error != null){
+      return Container(
+        color: Colors.orangeAccent,
+        width: double.infinity,
+        padding: EdgeInsets.all(8.5),
+        child: Row(
+          children: <Widget>[
+            Padding(
+            padding:const EdgeInsets.only(right:8.0),
+            child:Icon(Icons.error_outline),
+            ),
+            Expanded(child:Text(error,maxLines:5,),),
+            Padding(padding: const EdgeInsets.only(left:8.0),
+            child:IconButton(
+              icon: Icon(Icons.close),
+              onPressed: () {
+                setState(() {
+                  error = null;
+                });
+              },
+            )
+    )
+          ],
+        ),
+      );
+    }
+    return SizedBox(height: 2,);
+}
   @override
   void dispose() {
     emailController.dispose();
@@ -168,6 +199,9 @@ class _State extends State<LoginPage> {
         );
       }));
     } catch (e) {
+      setState(() {
+        error = e.message;
+      });
       print(e.toString());
     }
   }

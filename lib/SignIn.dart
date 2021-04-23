@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:groupProject/Account.dart';
 import 'FitnessEventPage.dart';
-
 
 class SignIn extends StatefulWidget {
   @override
@@ -159,11 +159,13 @@ class _State extends State<SignIn> {
       if (!user.emailVerified) {
         await user.sendEmailVerification();
       }
+
       await user.updateProfile(displayName: nameController.text);
       final user1 = _auth.currentUser;
 
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => FitnessEventPage(
+          builder: (context) => Account(
+            user: user1,
           )));
     } else {
       _isSuccess = false;

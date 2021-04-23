@@ -5,6 +5,7 @@ import 'package:groupProject/About.dart';
 import 'About.dart';
 import 'Account.dart';
 class FitnessEventPage extends StatefulWidget {
+
   @override
   State<StatefulWidget> createState() => new _State();
 }
@@ -66,7 +67,7 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.verified_user),
             title: Text('Profile'),
-            onTap: (){Navigator.push((context),MaterialPageRoute(builder: (context) => ProfileApp()),);},
+            onTap: (){Navigator.push((context),MaterialPageRoute(builder: (context) => Account()),);},
           ),
           ListTile(
             leading: Icon(Icons.settings),

@@ -1,15 +1,20 @@
 import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
+class Account extends StatefulWidget {
+  final User user;
 
-class ProfileApp extends StatelessWidget {
-
+  const Account({Key key, this.user}) : super(key: key);
+  @override
+  State<StatefulWidget> createState() => new _State();
+}
+class _State extends State<Account> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Profile'),),
+        appBar: AppBar(
+        title: Text('Your Profile'),),
       body: Column(
         children: <Widget>[
           Container(
@@ -28,24 +33,17 @@ class ProfileApp extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+                      CircleAvatar(
+                        backgroundImage: NetworkImage(
+                          "https://www.nj.com/resizer/h8MrN0-Nw5dB5FOmMVGMmfVKFJo=/450x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/SJGKVE5UNVESVCW7BBOHKQCZVE.jpg",
+                        ),
+                        radius: 50.0,
+                      ),
                       SizedBox(
                         height: 10.0,
-                      ), GestureDetector(
-                        onTap: () {
-                          _pickImage();
-                        },
-                        child: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                            "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg",),
-                          radius: 50.0,
-
-                          // NetworkImage(
-                          //   "https://www.nj.com/resizer/h8MrN0-Nw5dB5FOmMVGMmfVKFJo=/450x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/SJGKVE5UNVESVCW7BBOHKQCZVE.jpg",
-                          // ),
-                          // radius: 50.0,
-                        ),),
+                      ),
                       Text(
-                        "Jashanpreet",
+                        widget.user.displayName,
                         style: TextStyle(
                           fontSize: 22.0,
                           color: Colors.white,
@@ -55,36 +53,33 @@ class ProfileApp extends StatelessWidget {
                         height: 10.0,
                       ),
                       Card(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 20.0, vertical: 5.0),
+                        margin: EdgeInsets.symmetric(horizontal: 20.0,vertical: 5.0),
                         clipBehavior: Clip.antiAlias,
                         color: Colors.white,
                         elevation: 5.0,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0, vertical: 22.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 22.0),
                           child: Row(
                             children: <Widget>[
                               Expanded(
                                 child: Column(
                                   children: <Widget>[Text(
-                                    "Email :",
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 22.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),),
+                                  "Email :",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 22.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),),
                                     SizedBox(
                                       height: 5.0,
                                     ),
                                     Text(
-                                      "jashanmann7500@gmail.com",
+                                      widget.user.email,
                                       style: TextStyle(
                                         fontSize: 20.0,
                                         color: Colors.black,
                                       ),
-                                    )
-                                  ],
+                                    )],
                                 ),
                               ),
                             ],
@@ -96,30 +91,23 @@ class ProfileApp extends StatelessWidget {
                 ),
               )
           ),
+
           Container(
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  vertical: 30.0, horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(vertical: 30.0,horizontal: 16.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    "Bio:",
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 28.0
-                    ),
-                  ),
                   SizedBox(
-                    height: 10.0,
+                    height: 5.0,
                   ),
-                  Text(
-                    'My name is Jashan and I am  a freelance mobile app developper.\n'
-                        'I also take care of my Physical health by attending events through "We fit", and it helps me to stay fit. Contact me if you want more Info',
+                  Text('Welcome to the We Fit Family.You will now experience amazing fitness events with us.'
+                      'We hope you enjoy you enjoy this journey!!\n'
+                      '~Sincerely,\n'
+                        'Team We Fit',
                     style: TextStyle(
-                      fontSize: 22.0,
+                      fontSize: 16.0,
                       fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.w300,
                       color: Colors.black,
@@ -136,26 +124,6 @@ class ProfileApp extends StatelessWidget {
 
         ],
       ),
-    );
-  }
-
-  void _pickImage() async {
-
-    final imageSource = await showDialog<ImageSource>(
-        builder: (BuildContext context) =>
-            AlertDialog(
-              title: Text("Select the image source"),
-              actions: <Widget>[
-                MaterialButton(
-                  child: Text("Camera"),
-                  onPressed: () => Navigator.pop(context, ImageSource.camera),
-                ),
-                MaterialButton(
-                  child: Text("Gallery"),
-                  onPressed: () => Navigator.pop(context, ImageSource.gallery),
-                )
-              ],
-            )
     );
   }
 }

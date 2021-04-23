@@ -46,4 +46,3 @@ class _State extends State<Event> {
 
   }
 }
-
