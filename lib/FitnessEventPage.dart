@@ -33,7 +33,6 @@ class _State extends State<FitnessEventPage> {
             ),
           )
         ],
-
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:groupProject/SignIn.dart';
 import 'package:groupProject/Payment.dart';
 import 'package:groupProject/FitnessEventPage.dart';
@@ -9,7 +10,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _State extends State<LoginPage> {
-  TextEditingController nameController = TextEditingController();
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final formkey = GlobalKey<FormState>();
 
@@ -47,10 +49,10 @@ class _State extends State<LoginPage> {
                         return null;
                       }
                     },
-                    controller: nameController,
+                    controller: emailController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'User Name ',
+                      labelText: 'Email ',
                     ),
                   ),
                 ),
@@ -81,10 +83,7 @@ class _State extends State<LoginPage> {
                       child: Text('Login'),
                       onPressed: () {
                         if(formkey.currentState.validate()){
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => FitnessEventPage()),
-                          );
+                          _signInWithEmailAndPassword();
                         }
                         else{
                           return null;
@@ -135,5 +134,34 @@ class _State extends State<LoginPage> {
               ],
             )))
     );
+  }
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  void _signInWithEmailAndPassword() async {
+    try {
+      final User user = (await _auth.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      ))
+          .user;
+      if (!user.emailVerified) {
+        await user.sendEmailVerification();
+      }
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+        return FitnessEventPage(
+        );
+      }));
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  void _signOut() async {
+    await _auth.signOut();
   }
 }

@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'FitnessEventPage.dart';
 
 
 class SignIn extends StatefulWidget {
@@ -7,9 +10,20 @@ class SignIn extends StatefulWidget {
 }
 
 class _State extends State<SignIn> {
+  FirebaseAuth _auth = FirebaseAuth.instance;
+
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  bool _isSuccess;
+  String _userEmail;
   final formkey = GlobalKey<FormState>();
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    nameController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +61,24 @@ class _State extends State<SignIn> {
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'User Name',
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: TextFormField(
+                    validator: (value){
+                      if (value==null||value.isEmpty) {
+                        return 'Required';
+                      }
+                      else {
+                        return null;
+                      }
+                    },
+                    controller: emailController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Email',
                     ),
                   ),
                 ),
@@ -96,10 +128,11 @@ class _State extends State<SignIn> {
                             'SIGN UP',
                             style: TextStyle(fontSize: 20),
                           ),
-                          onPressed: () {
+                          onPressed: () async{
+
                             //signup screen
                             if(formkey.currentState.validate()){
-
+                              _registerAccount();
                             }
                             else{
                               return null;
@@ -112,5 +145,28 @@ class _State extends State<SignIn> {
               ],
             )))
     );
+
+  }
+  void _registerAccount() async {
+    //await Firebase.initializeApp();
+    final User user = (await _auth.createUserWithEmailAndPassword(
+      email: emailController.text,
+      password: passwordController.text,
+    ))
+        .user;
+
+    if (user != null) {
+      if (!user.emailVerified) {
+        await user.sendEmailVerification();
+      }
+      await user.updateProfile(displayName: nameController.text);
+      final user1 = _auth.currentUser;
+
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => FitnessEventPage(
+          )));
+    } else {
+      _isSuccess = false;
+    }
   }
 }
