@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:groupProject/About.dart';
+import 'package:groupProject/Account.dart';
+import 'package:groupProject/LoginPage.dart';
+import 'package:groupProject/MapSample.dart';
 // import 'app_example/Login_Screen.dart';
 import 'LoginPage.dart';
 //Roop Malhans

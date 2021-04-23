@@ -4,6 +4,8 @@ import 'package:groupProject/SignIn.dart';
 import 'package:groupProject/Payment.dart';
 import 'package:groupProject/FitnessEventPage.dart';
 
+import 'MapSample.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _State();
@@ -129,6 +131,15 @@ class _State extends State<LoginPage> {
                           },
                         )
                       ],
+                      mainAxisAlignment: MainAxisAlignment.center,
+                    )),
+                Container(
+                    child: Row(
+                      children: <Widget>[
+                    RaisedButton(child:Text("Open Maps"),onPressed:(){
+                      MapUtils.openMap(-3.823216,-38.481700);
+                    }
+                    )],
                       mainAxisAlignment: MainAxisAlignment.center,
                     )),
               ],
