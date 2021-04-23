@@ -167,8 +167,7 @@ class _State extends State<LoginPage> {
         return FitnessEventPage(
         );
       }));
-    }
-    catch (e) {
+    } catch (e) {
       print(e.toString());
     }
   }
