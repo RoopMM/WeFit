@@ -104,6 +104,34 @@ class _State extends State<LoginPage> {
                       ],
                       mainAxisAlignment: MainAxisAlignment.center,
                     )),
+                Container(
+                    child: Row(
+                      children: <Widget>[
+                        TextButton(
+                          child: Text(
+                            'Pay',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          onPressed: () {
+                            //signup screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Payment()),
+                            );
+                          },
+                        )
+                      ],
+                      mainAxisAlignment: MainAxisAlignment.center,
+                    )),
+                Container(
+                    child: Row(
+                      children: <Widget>[
+                    ElevatedButton(child:Text("Open Maps"),onPressed:(){
+                      MapUtils.openMap(-3.823216,-38.481700);
+                    }
+                    )],
+                      mainAxisAlignment: MainAxisAlignment.center,
+                    )),
               ],
             )))
     );
