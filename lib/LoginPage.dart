@@ -138,6 +138,7 @@ class _State extends State<LoginPage> {
     }
     return SizedBox(height: 2,);
 }
+
   @override
   void dispose() {
     emailController.dispose();

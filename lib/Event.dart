@@ -11,6 +11,17 @@ class Event extends StatefulWidget {
   State<StatefulWidget> createState() => new _State();
 }
 class _State extends State<Event> {
+  int counter=0;
+  increment(){
+    setState(() {
+      counter++;
+    });
+  }
+  decrement(){
+    setState(() {
+      counter--;
+    });
+  }
   @override
   Widget build(BuildContext context) {
         return new Scaffold(
@@ -40,9 +51,36 @@ class _State extends State<Event> {
                       Container(child:Column(children: <Widget>[FloatingActionButton(child:Icon(Icons.add_location_alt_rounded),onPressed:(){MapUtils.openMap(snapshot.data.docs[0]['latitude'],snapshot.data.docs[0]['longitude']);})],
                           mainAxisAlignment: MainAxisAlignment.center,
                       )),
+                      Container(
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              '$counter',style: TextStyle(fontSize: 40),
+                            ),
+                            SizedBox(
+                              height: 20.0,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  FloatingActionButton(onPressed: (){
+                                      increment();
+                                  }, child: Icon(Icons.add),
+                                  tooltip: 'Increment',),
+                                  SizedBox(width: 20,),
+                                  FloatingActionButton(onPressed: (){
+                                          decrement();
+                                  }, child: Icon(Icons.remove),
+                                  tooltip: 'Decrement',)
+                                ]
+                            )
+                          ],
+                        ),
+                      ),
                       Container(padding: EdgeInsets.fromLTRB(10, 50, 10, 10),
-                          child: ElevatedButton(child:Text("Book Now"),onPressed:(){Navigator.push(context, MaterialPageRoute(builder: (context) => Payment()),);},
-                          ),)
+                        child: ElevatedButton(child:Text("Book Now"),onPressed:(){Navigator.push(context, MaterialPageRoute(builder: (context) => Payment()),);},
+                        ),
+                      ),
                 ],
                     )
                     )

@@ -18,15 +18,47 @@ class _State extends State<FitnessEventPage> {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: AppBar(
-        title: Text('Event Page'),
+        title: Text('We Fit'),
       ),
       body:Container(width: 400,height:1000,
         child:Column(children: <Widget>[
           Padding(padding: const EdgeInsets.all(20),
             child: Text('Upcoming Events', style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),),),
           EventListView(),
-          Padding(padding: const EdgeInsets.all(20),
-            child: Text('Track Your Event ',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),),),
+          Card(
+            margin: EdgeInsets.symmetric(horizontal: 20.0,vertical: 5.0),
+            clipBehavior: Clip.antiAlias,
+            color: Colors.white,
+            elevation: 5.0,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 22.0),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Column(
+                      children: <Widget>[Text(
+                        "Welcome Back",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),),
+                        SizedBox(
+                          height: 5.0,
+                        ),
+                        Text(
+                          'Making excuses burns zero calories per hour. Don’t let the scale define you. Be active, be healthy, be happy!!',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.black,
+                          ),
+                        )],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
           // Container(
           //   child: Row(
           //     children: <Widget>[
@@ -49,31 +81,26 @@ class NavDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text(
-              'My Fit',
-              style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold, fontSize: 25),
+            child: CircleAvatar(
+              backgroundImage: NetworkImage("https://www.woolha.com/media/2020/03/eevee.png"),
+              radius: 50,
             ),
-            decoration: BoxDecoration(
-                color: Colors.blue,
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage('images/run.jpeg'))),
-          ),
-          ListTile(
-            leading: Icon(Icons.input),
-            title: Text('Welcome'),
-            onTap: () => {},
+            // Text(
+            //   'My Fit',
+            //   style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold, fontSize: 25),
+            // ),
+
+                // image: DecorationImage(
+                //     fit: BoxFit.fill,
+                //     image: AssetImage('images/run.jpeg'))
+
           ),
           ListTile(
             leading: Icon(Icons.verified_user),
             title: Text('Profile'),
             onTap: (){Navigator.push((context),MaterialPageRoute(builder: (context) => Account()),);},
           ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
+
           ListTile(
             leading: Icon(Icons.border_color),
             title: Text('About Us'),
