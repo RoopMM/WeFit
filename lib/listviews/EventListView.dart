@@ -1,3 +1,4 @@
+import 'package:groupProject/Event.dart';
 import 'package:flutter/material.dart';
 
 class EventListView extends StatelessWidget{
@@ -11,6 +12,7 @@ class EventListView extends StatelessWidget{
           EventList(
             image: 'images/run.jpeg',
             caption: 'Marathon',
+
           ),
           EventList(
             image: 'images/yoga.jpeg',
@@ -37,7 +39,9 @@ class EventList extends StatelessWidget {
     return Container(
       width: 300,
       child: InkWell(
-        onTap: (){},
+        onTap: (){
+          Navigator.push((context),MaterialPageRoute(builder: (context) => Event()),);
+        },
         child: ListTile(
           title: Image.asset(image),
           subtitle: Container(

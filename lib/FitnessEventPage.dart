@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:groupProject/LoginPage.dart';
 import 'package:groupProject/listviews/EventListView.dart';
-import 'package:groupProject/MapSample.dart';
 import 'package:groupProject/About.dart';
 import 'About.dart';
 import 'Account.dart';
-import 'MapSample.dart';
 class FitnessEventPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _State();

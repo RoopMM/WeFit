@@ -32,18 +32,21 @@ class _State extends State<About> {
     Container(
       child: Image(image: AssetImage("images/about.jpeg"),),
     ),
-      ElevatedButton(
+      FloatingActionButton(
+        child:Icon(Icons.attach_email),
         onPressed: () {
           customLaunch(
               'mailto:your@email.com?subject=test%20subject&body=test%20body');
         },
-        child: Text('Email'),
       ),
-      ElevatedButton(
+      Container(
+        padding: EdgeInsets.all(10),
+        child:
+    FloatingActionButton(
+        child: Icon(Icons.add_ic_call),
         onPressed: () {
           customLaunch('tel:+437 568 5232');
-        },
-        child: Text('Phone'),
+        },),
       )
     ]
     )
