@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:groupProject/Event.dart';
+import 'package:groupProject/FitnessEventPage.dart';
 
 class Account extends StatefulWidget {
   final User user;
@@ -118,9 +120,11 @@ class _State extends State<Account> {
               ),
             ),
           ),
-          SizedBox(
-            height: 20.0,
-          ),
+          Container(child:TextButton(child:Text('Login from here!',style: TextStyle(color: Colors.blueGrey),),onPressed: (){
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => FitnessEventPage()
+            ));
+          },)),
 
         ],
       ),

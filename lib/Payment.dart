@@ -34,10 +34,13 @@ class _State extends State<Payment> {
                         )),
                     Container(
                       padding: EdgeInsets.all(10),
-                      child: TextFormField(
+                      child: TextFormField(keyboardType: TextInputType.number,
                         validator: (value){
                           if (value==null||value.isEmpty) {
                             return 'Required';
+                          }
+                          if (value.length<16 || value.length>16){
+                            return 'Invalid Card Number ';
                           }
                           else {
                             return null;
@@ -51,10 +54,13 @@ class _State extends State<Payment> {
                     ),
                     Container(
                       padding: EdgeInsets.all(10),
-                      child: TextFormField(
+                      child: TextFormField(keyboardType: TextInputType.number,
                         validator: (value){
                           if (value==null||value.isEmpty) {
                             return 'Required';
+                          }
+                          if (value.length<3 || value.length>3){
+                            return 'Invalid CVV ';
                           }
                           else {
                             return null;
@@ -69,10 +75,13 @@ class _State extends State<Payment> {
                     ),
                     Container(
                         padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: TextFormField(
+                        child: TextFormField(keyboardType: TextInputType.number,
                           validator: (value){
                             if (value==null||value.isEmpty) {
                               return 'Required';
+                            }
+                            if (value.length<7 || value.length>7){
+                              return 'Invalid Date ';
                             }
                             else {
                               return null;
