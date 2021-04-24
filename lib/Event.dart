@@ -80,7 +80,7 @@ class _State extends State<Event> {
                           ],
                         ),
                       ),
-                      Container(padding: EdgeInsets.fromLTRB(10, 20, 10, 10),child: Text('Your Total',style: TextStyle(fontSize: 40,fontWeight:FontWeight.bold,color: Colors.amber),),),
+                      Container(padding: EdgeInsets.fromLTRB(10, 20, 10, 10),child: Text('Your Total: CAD',style: TextStyle(fontSize: 40,fontWeight:FontWeight.bold,color: Colors.amber),),),
                       Container(
                         child: Text((snapshot.data.docs[0]['price']*counter).toString(),style: TextStyle(fontSize: 50),),
                       ),
