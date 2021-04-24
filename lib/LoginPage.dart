@@ -75,7 +75,6 @@ class _State extends State<LoginPage> {
                       onPressed: () {
                         if(formkey.currentState.validate()){
                           _signInWithEmailAndPassword();
-                          _handleClickMe();
                         }
                         else{
                           return null;
@@ -171,24 +170,5 @@ class _State extends State<LoginPage> {
     await _auth.signOut();
   }
 
-  Future<void> _handleClickMe() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return CupertinoAlertDialog(
-          title: Text('Tip Of the day :'),
-          content: Text('Drinking 8 glass of regulates the body temperature'),
-          actions: <Widget>[
-            CupertinoDialogAction(
-              child: Text('Thanks!'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
+
 }
