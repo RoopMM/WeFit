@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:groupProject/SignIn.dart';
-import 'package:groupProject/Payment.dart';
 import 'package:groupProject/FitnessEventPage.dart';
 
-import 'MapSample.dart';
 
 class LoginPage extends StatefulWidget {
   @override

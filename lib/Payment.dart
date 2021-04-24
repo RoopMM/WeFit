@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
@@ -87,7 +88,6 @@ class _State extends State<Payment> {
                               return null;
                             }
                           },
-                          obscureText: true,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               labelText:' Expiry Date'
@@ -97,7 +97,7 @@ class _State extends State<Payment> {
                     ElevatedButton(
                         onPressed:(){
                           if(formkey.currentState.validate()){
-
+                            _handleClickMe();
                           }
                           else{
                             return null;
@@ -106,6 +106,27 @@ class _State extends State<Payment> {
                         child: Text('PAY NOW'))
                   ],
                 )))
+    );
+  }
+
+  Future<void> _handleClickMe() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: Text('Success'),
+          content: Text('Your payment is successful'),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -12,6 +12,7 @@ class Event extends StatefulWidget {
 }
 class _State extends State<Event> {
   int counter=0;
+  String value;
   increment(){
     setState(() {
       counter++;
@@ -63,22 +64,29 @@ class _State extends State<Event> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  FloatingActionButton(onPressed: (){
-                                      increment();
-                                  }, child: Icon(Icons.add),
-                                  tooltip: 'Increment',),
-                                  SizedBox(width: 20,),
-                                  FloatingActionButton(onPressed: (){
-                                          decrement();
+                                  ElevatedButton(onPressed: (){
+                                      decrement();
                                   }, child: Icon(Icons.remove),
-                                  tooltip: 'Decrement',)
+                                  ),
+                                  SizedBox(width: 20,),
+                                  ElevatedButton(onPressed: (){
+                                          increment();
+                                  }, child: Icon(Icons.add),
+                                  )
                                 ]
                             )
                           ],
                         ),
                       ),
                       Container(padding: EdgeInsets.fromLTRB(10, 50, 10, 10),
-                        child: ElevatedButton(child:Text("Book Now"),onPressed:(){Navigator.push(context, MaterialPageRoute(builder: (context) => Payment()),);},
+                        child: Text((snapshot.data.docs[0]['price']*counter).toString()),
+
+                      ),
+                      Container(padding: EdgeInsets.fromLTRB(10, 50, 10, 10),
+                        child: ElevatedButton(child:Text("Book Now"),onPressed:(){Navigator.push(context, MaterialPageRoute(builder: (context) => Payment(
+
+
+                        )),);},
                         ),
                       ),
                 ],
@@ -90,6 +98,5 @@ class _State extends State<Event> {
             },
           )
         );
-
   }
 }
