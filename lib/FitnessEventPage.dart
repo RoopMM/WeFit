@@ -80,19 +80,15 @@ class NavDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: CircleAvatar(
-              backgroundImage: NetworkImage("https://www.woolha.com/media/2020/03/eevee.png"),
-              radius: 50,
+            child: Text(
+              'My Fit',
+              style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold, fontSize: 25),
             ),
-            // Text(
-            //   'My Fit',
-            //   style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold, fontSize: 25),
-            // ),
-
-                // image: DecorationImage(
-                //     fit: BoxFit.fill,
-                //     image: AssetImage('images/run.jpeg'))
-
+            decoration: BoxDecoration(
+                color: Colors.blue,
+                image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage('images/logo.jpg'))),
           ),
           ListTile(
             leading: Icon(Icons.verified_user),
