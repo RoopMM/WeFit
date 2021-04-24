@@ -3,7 +3,9 @@ import 'package:groupProject/LoginPage.dart';
 import 'package:groupProject/listviews/EventListView.dart';
 import 'package:groupProject/About.dart';
 import 'About.dart';
-import 'Account.dart';
+/*
+Fitness Event Page, main page of the app
+ */
 class FitnessEventPage extends StatefulWidget {
 
   @override
