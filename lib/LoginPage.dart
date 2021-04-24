@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:groupProject/SignIn.dart';
@@ -74,6 +75,7 @@ class _State extends State<LoginPage> {
                       onPressed: () {
                         if(formkey.currentState.validate()){
                           _signInWithEmailAndPassword();
+                          _handleClickMe();
                         }
                         else{
                           return null;
@@ -155,8 +157,7 @@ class _State extends State<LoginPage> {
         await user.sendEmailVerification();
       }
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-        return FitnessEventPage(
-        );
+        return FitnessEventPage();
       }));
     } catch (e) {
       setState(() {
@@ -168,5 +169,26 @@ class _State extends State<LoginPage> {
 
   void _signOut() async {
     await _auth.signOut();
+  }
+
+  Future<void> _handleClickMe() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: Text('Tip Of the day :'),
+          content: Text('Drinking 8 glass of regulates the body temperature'),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              child: Text('Thanks!'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
