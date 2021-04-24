@@ -20,8 +20,7 @@ class _State extends State<FitnessEventPage> {
       appBar: AppBar(
         title: Text('We Fit'),
       ),
-      body:Container(width: 400,height:1000,
-        child:Column(children: <Widget>[
+      body:ListView(children: <Widget>[
           Padding(padding: const EdgeInsets.all(20),
             child: Text('Upcoming Events', style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),),),
           EventListView(),
@@ -68,7 +67,7 @@ class _State extends State<FitnessEventPage> {
           // )
         ],
       ),
-    ));
+    );
   }
 
 }
