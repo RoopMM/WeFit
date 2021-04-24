@@ -32,8 +32,8 @@ class EventListView extends StatelessWidget{
 class EventList extends StatelessWidget {
   final String image;
   final String caption;
-
-  EventList({this.image, this.caption});
+  int value;
+  EventList({this.image, this.caption,this.value});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,13 +44,14 @@ class EventList extends StatelessWidget {
         // },
         child: ListTile(
           onTap: (){
-            Navigator.push((context),MaterialPageRoute(builder: (context) => Event()),);
+            Navigator.push((context),MaterialPageRoute(builder: (context) => Event(value)),);
           },
           title: Image.asset(image),
           subtitle: Container(
             alignment:Alignment.topCenter,
             child: Text(caption),
           ),
+
         ),
       ),
     );

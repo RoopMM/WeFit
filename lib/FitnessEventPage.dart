@@ -27,7 +27,7 @@ class _State extends State<FitnessEventPage> {
           Card(
             margin: EdgeInsets.symmetric(horizontal: 20.0,vertical: 5.0),
             clipBehavior: Clip.antiAlias,
-            color: Colors.white,
+            color: Colors.yellow,
             elevation: 5.0,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 22.0),
@@ -51,12 +51,25 @@ class _State extends State<FitnessEventPage> {
                             fontSize: 20.0,
                             color: Colors.black,
                           ),
-                        )],
+                        ),
+                        ],
                     ),
                   ),
                 ],
               ),
             ),
+          ),
+          Container(
+    padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
+              child:Text('Task for Today\n Chakrasana',style: TextStyle(fontSize: 30),textAlign: TextAlign.center,)),
+          Container(
+            child:Image.asset('images/asana.png')
+          ),
+          Container(child:Text('How to Perform?',style:TextStyle(fontSize: 30,color: Colors.amber,fontWeight: FontWeight.bold),textAlign: TextAlign.center,)),
+          Container(
+            child: Text('Lie flat on your back on the floor. Your hands must be placed behind your shoulders. '
+                'Press your feet and palms, and lift your entire body off the mat. Hold the pose for a minute, or as long as you are comfortable. '
+                'Then, release by bending your arms and legs, and gently lowering your back on the ground. ', style:TextStyle(fontSize: 15),textAlign: TextAlign.center,),
           )
           // Container(
           //   child: Row(
@@ -66,6 +79,10 @@ class _State extends State<FitnessEventPage> {
           //   ),
           // )
         ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.blue,
+        child: Text('Version 1.0.0 \n @2021 WeFit Inc.', style: TextStyle(fontSize: 15), textAlign: TextAlign.center),
       ),
     );
   }
@@ -89,11 +106,6 @@ class NavDrawer extends StatelessWidget {
                 image: DecorationImage(
                     fit: BoxFit.fill,
                     image: AssetImage('images/logo.jpg'))),
-          ),
-          ListTile(
-            leading: Icon(Icons.verified_user),
-            title: Text('Profile'),
-            onTap: (){Navigator.push((context),MaterialPageRoute(builder: (context) => Account()),);},
           ),
 
           ListTile(
