@@ -5,5 +5,5 @@ Developers:
 Jashanpreet Singh
 
 App Description: 
-Health Event Organiser using Flutter ,
+Hybrid Health Events Organiser App built using Flutter Framework
 App Name: WE FIT
