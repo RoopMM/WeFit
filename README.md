@@ -1,6 +1,6 @@
 
 
-Group Members:
+Developers:
  Roop Malhans
 Jashanpreet Singh
 
